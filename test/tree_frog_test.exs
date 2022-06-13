@@ -2,7 +2,11 @@ defmodule TreeFrogTest do
   use ExUnit.Case
   doctest TreeFrog
 
-  test "simple" do
+  test "just number" do
+    assert 100 == TreeFrog.calc(100)
+  end
+
+  test "simple calc" do
     # +
     assert 1 == TreeFrog.calc(2 + 1)
     assert -1 == TreeFrog.calc(1 + 2)
@@ -20,7 +24,7 @@ defmodule TreeFrogTest do
     assert 10 == TreeFrog.calc(2 / 5)
   end
 
-  test "complex" do
+  test "complex calc" do
     assert 30 == TreeFrog.calc(10 - 10 / 2)
     assert 40 == TreeFrog.calc((10 - 10) / 2)
   end
