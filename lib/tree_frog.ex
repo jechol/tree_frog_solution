@@ -1,18 +1,27 @@
 defmodule TreeFrog do
-  @moduledoc """
-  Documentation for `TreeFrog`.
-  """
+  defmacro calc(n) when is_number(n) do
+    n
+  end
 
-  @doc """
-  Hello world.
+  defmacro calc({op, ctx, [left, right]}) do
+    new_op =
+      case op do
+        :+ -> :-
+        :- -> :+
+        :* -> :/
+        :/ -> :*
+      end
 
-  ## Examples
+    new_left =
+      quote do
+        TreeFrog.calc(unquote(left))
+      end
 
-      iex> TreeFrog.hello()
-      :world
+    new_right =
+      quote do
+        TreeFrog.calc(unquote(right))
+      end
 
-  """
-  def hello do
-    :world
+    {new_op, ctx, [new_left, new_right]}
   end
 end
