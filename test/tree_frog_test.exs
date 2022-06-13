@@ -3,6 +3,10 @@ defmodule TreeFrogTest do
   doctest TreeFrog
 
   test "greets the world" do
-    assert TreeFrog.hello() == :world
+    refute true
+  end
+
+  test "hello" do
+    refute true
   end
 end
